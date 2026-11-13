@@ -1,0 +1,3 @@
+principal,ou,right,child_class,effect,inherited,tier
+LAB Helpdesk,"OU=Servers,DC=lab,DC=example",CreateChild,msDS-DelegatedManagedServiceAccount,Allow,false,standard
+LAB Admins,"OU=Servers,DC=lab,DC=example",GenericAll,*,Allow,true,privileged
