@@ -37,3 +37,7 @@ This is triage over exported ACEs. Resolve GUIDs and composite masks before expo
 ```sh
 python3 -m unittest discover -s tests -v
 ```
+
+## Review workflow
+
+Group candidate entries by OU and principal. Check whether the ACE applies to the target object and whether inherited permissions or group membership change effective access.
