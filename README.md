@@ -41,3 +41,7 @@ python3 -m unittest discover -s tests -v
 ## Review workflow
 
 Group candidate entries by OU and principal. Check whether the ACE applies to the target object and whether inherited permissions or group membership change effective access.
+
+## Usage terms
+
+Original material in this revision requires the owner's written permission for modification or redistribution. Earlier MIT releases and third-party licenses retain their terms. See [LICENSE](LICENSE).
