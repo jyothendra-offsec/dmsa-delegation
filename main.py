@@ -26,8 +26,19 @@ def main():
     parser.add_argument("acl_csv")
     args = parser.parse_args()
     with open(args.acl_csv, encoding="utf-8-sig", newline="") as stream:
-        print(json.dumps(list(audit(csv.DictReader(stream))), indent=2))
+        reader = csv.DictReader(stream)
+        required = {"principal", "ou", "right", "child_class", "effect", "inherited", "tier"}
+        missing = required - set(reader.fieldnames or ())
+        if missing:
+            raise ValueError(f"missing CSV columns: {', '.join(sorted(missing))}")
+        print(json.dumps(list(audit(reader)), indent=2))
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (OSError, ValueError, TypeError, KeyError, AttributeError, IndexError, csv.Error) as exc:
+        import sys
+
+        print(f"Invalid input: {exc}", file=sys.stderr)
+        raise SystemExit(2) from None
